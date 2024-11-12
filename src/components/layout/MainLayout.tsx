@@ -1,13 +1,33 @@
-import { Layout, Menu } from "antd";
-import { Outlet } from "react-router-dom";
+import { Layout, Menu, MenuProps } from "antd";
+import { NavLink, Outlet } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
 export default function MainLayout() {
-  const items = new Array(3).fill(null).map((_, index) => ({
-    key: String(index + 1),
-    label: `nav ${index + 1}`,
-  }));
+  const items: MenuProps["items"] = [
+    {
+      key: "Dashboard",
+      label: <NavLink to={"/admin/dashboard"}>Dashboard</NavLink>,
+    },
+    {
+      key: "User Management",
+      label: "User Management",
+      children: [
+        {
+          key: "Create Admin",
+          label: <NavLink to={"/admin/create-admin"}>Create Admin</NavLink>,
+        },
+        {
+          key: "Create Faculty",
+          label: <NavLink to={"/admin/create-faculty"}>Create Admin</NavLink>,
+        },
+        {
+          key: "Create Student",
+          label: <NavLink to={"/admin/create-student"}>Create Admin</NavLink>,
+        },
+      ],
+    },
+  ];
   return (
     <Layout style={{ height: "100vh" }}>
       <Sider
