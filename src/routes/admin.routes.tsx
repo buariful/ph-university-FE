@@ -36,10 +36,6 @@ export const adminpaths = [
       },
     ],
   },
-  {
-    path: "create-student",
-    element: <CreateStudent />,
-  },
 ];
 
 export const adminRoutes = adminpaths.reduce((acc: TRoute[], item) => {
