@@ -8,19 +8,17 @@ const { Header, Content } = Layout;
 
 export default function MainLayout() {
   const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <Layout style={{ height: "100vh" }}>
       <Sidebar />
 
       <Layout>
         <Header style={{ padding: 0 }}>
-          <Button
-            onClick={() => {
-              dispatch(logout());
-            }}
-          >
-            Logout
-          </Button>
+          <Button onClick={handleLogout}>Logout</Button>
         </Header>
         <Content style={{ margin: "24px 16px 0" }}>
           <Outlet />
