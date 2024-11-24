@@ -4,6 +4,8 @@ import sideBarItemGenerator from "../../utils/sidebarItemsGenerator";
 import { adminPaths } from "../../routes/admin.routes";
 import { facultyPaths } from "../../routes/faculty.routes";
 import { studentPaths } from "../../routes/student.routes";
+import { useAppSelector } from "../../redux/feature/hooks";
+import { selectCurrentUser } from "../../redux/feature/auth/authSlice";
 
 const userRoles = {
   ADMIN: "admin",
@@ -12,6 +14,8 @@ const userRoles = {
 };
 
 export default function Sidebar() {
+  const user = useAppSelector(selectCurrentUser);
+  console.log(user);
   const role = "admin";
   let sidebarItems;
 
